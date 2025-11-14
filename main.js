@@ -11,8 +11,18 @@
  * @returns {string} containing number converted to output system
  */
 export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
-  //TODO code
-  //let dtoOut = exMain(inputNumber, inputNumberSystem, outputNumberSystem);
+  let vstup = inputNumber;
+  let dtoOut = 0;
+  let zbytek = 0;
+  let citac = 1;
+
+  while (vstup > 0)
+  {
+    zbytek = vstup % 10;    //posledni cifra
+    dtoOut = dtoOut + zbytek * citac;   //suma cifer prenasobenych potrebnou mocninou 5
+    vstup = Math.floor(vstup / 10);     //odstraneni posledni cifry
+    citac = citac * 5;  //dalsi mocnina petky
+  }
   return dtoOut;
 }
 
@@ -22,7 +32,7 @@ export function main(inputNumber, inputNumberSystem, outputNumberSystem) {
  * @returns {Array} array of numbers refering to permitted input systems
  */
 export function permittedInputSystems() {
-	return [10, 2];
+	return [5];
 }
 
 /**
@@ -31,5 +41,5 @@ export function permittedInputSystems() {
  * @returns {Array} array of numbers refering to permitted output systems
  */
 export function permittedOutputSystems() {
-	return [10, 2];
+	return [10];
 }
